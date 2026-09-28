@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sultan Al-enzi</title>
+<meta name="description" content="Sultan Al-enzi — Cybersecurity student at the University of Hafr Al-Batin, eJPT certified.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#0d1117; --surface:#161b22; --surface-2:#1c2330;
+  --border:#293040; --text:#e6edf3; --muted:#8b98a9;
+  --accent:#4f9cf9; --accent-soft:rgba(79,156,249,.12);
+  --radius:14px; --maxw:880px;
+}
+:root[data-theme="light"]{
+  --bg:#f7f8fa; --surface:#ffffff; --surface-2:#f0f2f6;
+  --border:#e2e6ec; --text:#141922; --muted:#5d6878;
+  --accent:#1f6feb; --accent-soft:rgba(31,111,235,.10);
+}
+@media (prefers-color-scheme: light){
+  :root:not([data-theme="dark"]){
+    --bg:#f7f8fa; --surface:#ffffff; --surface-2:#f0f2f6;
+    --border:#e2e6ec; --text:#141922; --muted:#5d6878;
+    --accent:#1f6feb; --accent-soft:rgba(31,111,235,.10);
+  }
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg); color:var(--text);
+  font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+a{color:inherit;text-decoration:none}
+img{max-width:100%; display:block}
+
+/* ---------- nav ---------- */
+.nav{
+  position:sticky; top:0; z-index:50;
+  background:color-mix(in srgb, var(--bg) 88%, transparent);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+}
+.nav-in{
+  max-width:var(--maxw); margin:0 auto; padding:14px 20px;
+  display:flex; align-items:center; gap:22px;
+}
+.brand{font-weight:700; letter-spacing:-.01em; margin-right:auto}
+.nav-links{display:flex; gap:19px}
+.nav-links a{color:var(--muted); font-size:.89rem; font-weight:500; transition:color .18s}
+.nav-links a:hover{color:var(--accent)}
+.toggle{
+  background:none; border:1px solid var(--border); color:var(--muted);
+  width:34px; height:34px; border-radius:9px; cursor:pointer;
+  display:inline-flex; align-items:center; justify-content:center;
+  transition:.18s; flex-shrink:0; padding:0;
+}
+.toggle svg{width:16px; height:16px; stroke:currentColor; fill:none;
+  stroke-width:2; stroke-linecap:round; stroke-linejoin:round}
+.toggle:hover{color:var(--accent); border-color:var(--accent)}
+
+/* ---------- layout ---------- */
+.wrap{max-width:var(--maxw); margin:0 auto; padding:0 20px}
+section{padding:46px 0; border-bottom:1px solid var(--border)}
+section:last-of-type{border-bottom:none}
+.label{
+  font-family:'JetBrains Mono',monospace; font-size:.74rem;
+  letter-spacing:.14em; text-transform:uppercase;
+  color:var(--accent); margin-bottom:16px;
+}
+.body-text{color:var(--muted); max-width:62ch}
+
+/* ---------- hero ---------- */
+.hero{padding:64px 0 46px; border-bottom:1px solid var(--border)}
+.hero h1{font-size:clamp(2.1rem,6vw,3rem); font-weight:700; letter-spacing:-.025em; line-height:1.15}
+.hero .role{color:var(--accent); font-weight:600; font-size:1.06rem; margin-top:10px}
+.hero .intro{color:var(--muted); margin-top:16px; max-width:56ch}
+.actions{display:flex; flex-wrap:wrap; gap:10px; margin-top:26px}
+.btn{
+  display:inline-flex; align-items:center; gap:7px;
+  padding:9px 16px; border-radius:9px; font-size:.88rem; font-weight:500;
+  border:1px solid var(--border); background:var(--surface);
+  transition:.18s; cursor:pointer; font-family:inherit; color:inherit;
+}
+.btn:hover{border-color:var(--accent); color:var(--accent); transform:translateY(-1px)}
+.btn.primary{background:var(--accent); border-color:var(--accent); color:#fff}
+.btn.primary:hover{opacity:.9; color:#fff}
+
+/* ---------- cards ---------- */
+.card{
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); padding:20px 22px; margin-bottom:14px;
+}
+.card:last-child{margin-bottom:0}
+.card h3{font-size:1.04rem; font-weight:600}
+.card .meta{
+  color:var(--muted); font-size:.85rem; margin-top:3px;
+  font-family:'JetBrains Mono',monospace;
+}
+.card p{color:var(--muted); font-size:.93rem; margin-top:11px}
+.card ul{margin-top:11px; padding-left:18px; color:var(--muted); font-size:.93rem}
+.card li{margin-bottom:5px}
+.card li::marker{color:var(--accent)}
+
+/* ---------- certification ---------- */
+.cert{
+  display:grid; grid-template-columns:230px 1fr; gap:22px; align-items:center;
+  background:var(--surface); border:1px solid var(--border);
+  border-radius:var(--radius); padding:20px 22px;
+}
+.cert-img{
+  border:1px solid var(--border); border-radius:9px;
+  overflow:hidden; background:var(--surface-2);
+}
+.cert-img img{width:100%; height:auto}
+.cert h3{font-size:1.1rem; font-weight:600}
+.cert .issuer{color:var(--accent); font-size:.9rem; font-weight:500; margin-top:2px}
+.cert dl{margin-top:13px; display:grid; grid-template-columns:auto 1fr; gap:5px 14px; font-size:.86rem}
+.cert dt{color:var(--muted); font-family:'JetBrains Mono',monospace; font-size:.78rem}
+.cert dd{color:var(--text)}
+
+/* ---------- skills ---------- */
+.skill-group{margin-bottom:18px}
+.skill-group:last-child{margin-bottom:0}
+.skill-group h4{font-size:.88rem; font-weight:600; margin-bottom:9px}
+.tags{display:flex; flex-wrap:wrap; gap:7px}
+.tag{
+  background:var(--accent-soft); color:var(--accent);
+  border:1px solid transparent; padding:4px 11px; border-radius:7px;
+  font-size:.82rem; font-family:'JetBrains Mono',monospace;
+}
+
+/* ---------- contact ---------- */
+.contact-list{display:flex; flex-direction:column; gap:1px; margin-top:4px}
+.contact-list a{
+  display:flex; align-items:center; gap:12px; padding:13px 2px;
+  border-bottom:1px solid var(--border); font-size:.94rem; transition:.18s;
+}
+.contact-list a:last-child{border-bottom:none}
+.contact-list a:hover{color:var(--accent); padding-left:6px}
+.contact-list .k{
+  color:var(--muted); font-family:'JetBrains Mono',monospace;
+  font-size:.78rem; width:82px; flex-shrink:0;
+}
+footer{padding:28px 0 40px; color:var(--muted); font-size:.83rem; text-align:center}
+
+/* ---------- responsive ---------- */
+@media (max-width:660px){
+  .nav-links{display:none}
+  .hero{padding:44px 0 34px}
+  section{padding:36px 0}
+  .cert{grid-template-columns:1fr; gap:16px}
+  .contact-list .k{width:70px}
+}
+
+/* ---------- print (Ctrl+P → PDF) ---------- */
+@media print{
+  .nav,.actions,footer,.cert-img{display:none}
+  body{background:#fff; color:#000; font-size:11pt}
+  section{padding:14px 0; border-color:#ddd; break-inside:avoid}
+  .card,.cert{border-color:#ddd; padding:10px 0; margin-bottom:8px; background:none}
+  .cert{display:block}
+  .hero{padding:0 0 14px}
+  .tag{background:none; border:1px solid #bbb; color:#000}
+  .label,.hero .role,.cert .issuer,.card li::marker{color:#000}
+  a{color:#000}
+}
+</style>
+</head>
+<body>
+
+<header class="nav">
+  <div class="nav-in">
+    <a href="#top" class="brand">Sultan Al-enzi</a>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#certifications">Certifications</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="toggle" id="themeToggle" aria-label="Toggle theme"></button>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <!-- Hero -->
+  <section class="hero" id="top">
+    <h1>Sultan Al-enzi</h1>
+    <p class="role">Cybersecurity Student &middot; eJPT Certified</p>
+    <p class="intro">
+      Cybersecurity undergraduate at the University of Hafr Al-Batin, focused on penetration
+      testing and the security of web applications — finding where they break, and building
+      them so they don't.
+    </p>
+    <div class="actions">
+      <a class="btn primary" href="mailto:sosa.slt123@gmail.com">Email Me</a>
+      <a class="btn" href="https://www.linkedin.com/in/sultain-al-enzi-075784326/" target="_blank" rel="noopener">LinkedIn</a>
+      <a class="btn" href="https://github.com/sultanafk" target="_blank" rel="noopener">GitHub</a>
+      <button class="btn" onclick="window.print()">Download CV</button>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about">
+    <p class="label">About</p>
+    <p class="body-text">
+      I am a Cybersecurity student with an interest in offensive security and how real
+      applications fail. I hold the eJPT certification in penetration testing, and during my
+      cooperative training I built a full-stack web application end to end — from database
+      design through to deployment — applying secure coding practices such as parameterized
+      queries, input validation, and access control along the way.
+    </p>
+  </section>
+
+  <!-- Certifications -->
+  <section id="certifications">
+    <p class="label">Certifications</p>
+    <div class="cert">
+      <div class="cert-img">
+        <img src="assets/ejpt.png" alt="eJPT certificate — Sultan Al-enzi, INE Security">
+      </div>
+      <div>
+        <h3>eJPT — Junior Penetration Tester</h3>
+        <p class="issuer">INE Security</p>
+        <dl>
+          <dt>Awarded</dt><dd>May 29, 2026</dd>
+          <dt>ID</dt><dd>183799058</dd>
+        </dl>
+        <p>
+          A hands-on certification covering assessment methodology, network and host
+          reconnaissance, vulnerability assessment, and web application attacks — all
+          validated through a practical exam.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Education -->
+  <section id="education">
+    <p class="label">Education</p>
+    <div class="card">
+      <h3>Bachelor of Science in Cybersecurity</h3>
+      <p class="meta">University of Hafr Al-Batin (UHB) &middot; Saudi Arabia</p>
+      <p>
+        College of Computer Science and Engineering. Coursework covering network security,
+        secure software development, databases, and programming fundamentals.
+      </p>
+    </div>
+  </section>
+
+  <!-- Experience -->
+  <section id="experience">
+    <p class="label">Experience</p>
+    <div class="card">
+      <h3>Cooperative Training — Full Stack Web Development</h3>
+      <p class="meta">Riyadh Second Health Cluster &middot; Jun 2026 – Aug 2026</p>
+      <p>
+        Eight-week cooperative training at King Fahad Medical City, within the IT department
+        supporting the cluster's digital services.
+      </p>
+      <ul>
+        <li>Built a complete ASP.NET Web Forms application backed by Microsoft SQL Server.</li>
+        <li>Implemented full CRUD functionality using GridView and Repeater data controls.</li>
+        <li>Used parameterized SQL queries to protect the data layer against SQL injection.</li>
+        <li>Added server-side validation and error handling to prevent runtime failures.</li>
+        <li>Implemented data export to Excel, Word, and PDF, plus email notifications over SMTP.</li>
+        <li>Deployed the application to a live host and configured its security settings.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Projects -->
+  <section id="projects">
+    <p class="label">Projects</p>
+    <div class="card">
+      <h3>Cat Store Management System</h3>
+      <p class="meta">ASP.NET Web Forms &middot; C# &middot; SQL Server</p>
+      <p>
+        A web application for managing store products, built during cooperative training.
+        Covers the full stack — interface, business logic, data access, and deployment.
+      </p>
+      <ul>
+        <li>Product management: add, edit, delete, and display records from the database.</li>
+        <li>Two presentation approaches compared: editable GridView and read-only Repeater.</li>
+        <li>Export module producing Excel, Word, and PDF output from live data.</li>
+        <li>Contact form delivering messages through an SMTP mail service.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Skills -->
+  <section id="skills">
+    <p class="label">Skills</p>
+
+    <div class="skill-group">
+      <h4>Security</h4>
+      <div class="tags">
+        <span class="tag">Penetration Testing</span><span class="tag">Web App Security</span>
+        <span class="tag">Network Reconnaissance</span><span class="tag">Vulnerability Assessment</span>
+        <span class="tag">Secure Coding</span><span class="tag">SQL Injection Prevention</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h4>Development</h4>
+      <div class="tags">
+        <span class="tag">C#</span><span class="tag">ASP.NET Web Forms</span>
+        <span class="tag">Entity Framework</span><span class="tag">HTML</span>
+        <span class="tag">CSS</span><span class="tag">JavaScript</span>
+        <span class="tag">jQuery</span><span class="tag">Bootstrap</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h4>Databases &amp; Tools</h4>
+      <div class="tags">
+        <span class="tag">Microsoft SQL Server</span><span class="tag">T-SQL</span>
+        <span class="tag">Visual Studio</span><span class="tag">IIS</span>
+        <span class="tag">Git</span><span class="tag">Power BI</span>
+      </div>
+    </div>
+
+    <div class="skill-group">
+      <h4>Languages</h4>
+      <div class="tags">
+        <span class="tag">Arabic — Native</span><span class="tag">English — Professional</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact">
+    <p class="label">Contact</p>
+    <div class="contact-list">
+      <a href="mailto:sosa.slt123@gmail.com"><span class="k">Email</span>sosa.slt123@gmail.com</a>
+      <a href="https://github.com/sultanafk" target="_blank" rel="noopener"><span class="k">GitHub</span>github.com/sultanafk</a>
+      <a href="https://www.linkedin.com/in/sultain-al-enzi-075784326/" target="_blank" rel="noopener"><span class="k">LinkedIn</span>linkedin.com/in/sultain-al-enzi</a>
+      <!-- To show a phone number publicly, uncomment the line below:
+      <a href="tel:+966530395781"><span class="k">Phone</span>+966 53 039 5781</a>
+      -->
+    </div>
+  </section>
+
+  <footer>&copy; 2026 Sultan Al-enzi</footer>
+</div>
+
+<script>
+(function(){
+  var root = document.documentElement,
+      btn  = document.getElementById('themeToggle'),
+      MOON = '<svg viewBox="0 0 24 24"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>',
+      SUN  = '<svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="4.2"/>'
+           + '<path d="M12 2v2M12 20v2M2 12h2M20 12h2'
+           + 'M4.9 4.9l1.5 1.5M17.6 17.6l1.5 1.5'
+           + 'M19.1 4.9l-1.5 1.5M6.4 17.6l-1.5 1.5"/></svg>';
+
+  function isLight(){
+    var t = root.getAttribute('data-theme');
+    if (t) return t === 'light';
+    return window.matchMedia('(prefers-color-scheme: light)').matches;
+  }
+  function paint(){ btn.innerHTML = isLight() ? SUN : MOON; }
+
+  try {
+    var saved = localStorage.getItem('theme');
+    if (saved) root.setAttribute('data-theme', saved);
+  } catch(e){}
+
+  paint();
+  btn.addEventListener('click', function(){
+    var next = isLight() ? 'dark' : 'light';
+    root.setAttribute('data-theme', next);
+    try { localStorage.setItem('theme', next); } catch(e){}
+    paint();
+  });
+})();
+</script>
+</body>
+</html>
